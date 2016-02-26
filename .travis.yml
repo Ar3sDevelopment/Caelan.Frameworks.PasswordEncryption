@@ -1,8 +1,8 @@
 language: csharp
-solution: Caelan.Frameworks.PasswordHashing.sln
+solution: Caelan.Frameworks.PasswordEncryption.sln
 install:
-  - nuget restore Caelan.Frameworks.PasswordHashing.sln
+  - nuget restore Caelan.Frameworks.PasswordEncryption.sln
   - sudo apt-get install nunit-console
 script:
-  - xbuild /p:Configuration=Release Caelan.Frameworks.PasswordHashing.sln
-  - nunit-console ./Caelan.Frameworks.PasswordHashing.NUnit/bin/Release/Caelan.Frameworks.PasswordHashing.NUnit.dll
+  - xbuild /p:Configuration=Release Caelan.Frameworks.PasswordEncryption.sln
+  - nunit-console ./Caelan.Frameworks.PasswordEncryption.NUnit/bin/Release/Caelan.Frameworks.PasswordEncryption.NUnit.dll
