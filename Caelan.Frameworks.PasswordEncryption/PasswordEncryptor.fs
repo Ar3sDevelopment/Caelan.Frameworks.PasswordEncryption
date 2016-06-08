@@ -1,6 +1,5 @@
 ﻿namespace Caelan.Frameworks.PasswordEncryption.Classes
 
-open Caelan.Frameworks.Common.Helpers
 open Caelan.Frameworks.PasswordEncryption.Interfaces
 open System
 open System.Text
@@ -23,13 +22,13 @@ type PasswordEncryptor(defaultPassword : string, secret : string, salt : string,
     /// This function encrypts given password using the encryptor inside the class
     /// </summary>
     /// <param name="password">The password to be encrypted</param>
-    member __.EncryptPassword(password) = (encryptor, password) |> MemoizeHelper.Memoize(fun (e, p) -> e.EncryptPassword(p, secret, salt))
+    member __.EncryptPassword(password) = encryptor.EncryptPassword(password, secret, salt)
     
     /// <summary>
     /// This function decrypts given password using the encryptor inside the class
     /// </summary>
     /// <param name="crypted">The crypted data to be decrypted</param>
-    member __.DecryptPassword(crypted) = (encryptor, crypted) |> MemoizeHelper.Memoize(fun (e, p) -> e.DecryptPassword(p, secret, salt))
+    member __.DecryptPassword(crypted) = encryptor.DecryptPassword(crypted, secret, salt)
     
     new(defaultPassword, secret, salt) = 
         let encryptor = 
